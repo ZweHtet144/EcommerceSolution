@@ -110,49 +110,49 @@ else
     <!-- Messenger Chat plugin Code -->
     <div id="fb-root"></div>
 
-                    <!-- Your Chat plugin code -->
+    <!-- Your Chat plugin code -->
     <div id="fb-customer-chat" class="fb-customerchat">
     </div>
-                    @* Messenger Plugin *@
-                    <script>
-                        var chatbox = document.getElementById('fb-customer-chat');
-                        chatbox.setAttribute("page_id", "112755027165266");
-                        chatbox.setAttribute("attribution", "biz_inbox");
+    @* Messenger Plugin *@
+    <script>
+        var chatbox = document.getElementById('fb-customer-chat');
+        chatbox.setAttribute("page_id", "112755027165266");
+        chatbox.setAttribute("attribution", "biz_inbox");
 
-                        window.fbAsyncInit = function () {
-                            FB.init({
-                                xfbml: true,
-                                version: 'v11.0'
-                            });
-                        };
+        window.fbAsyncInit = function () {
+            FB.init({
+                xfbml: true,
+                version: 'v11.0'
+            });
+        };
 
-                        (function (d, s, id) {
-                            var js, fjs = d.getElementsByTagName(s)[0];
-                            if (d.getElementById(id)) return;
-                            js = d.createElement(s); js.id = id;
-                            js.src = 'https://connect.facebook.net/my_MM/sdk/xfbml.customerchat.js';
-                            fjs.parentNode.insertBefore(js, fjs);
-                        }(document, 'script', 'facebook-jssdk'));
-                    </script>
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = 'https://connect.facebook.net/my_MM/sdk/xfbml.customerchat.js';
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
     <!-- Copyright -->
-                    <div class="footer-copyright text-center py-3">
-                        © @DateTime.Now.ToString("yyyy") Copyright:
-                        <a href="#" class="text-reset">www.nyeinshopping.com</a><br>
-                        <p><b><a href="https://www.nksoftwarehouse.com" class="text-reset">Powered By NK Software House</a></b></p>
-                    </div>
+    <div class="footer-copyright text-center py-3">
+        © @DateTime.Now.ToString("yyyy") Copyright:
+        <a href="#" class="text-reset">www.nyeinshopping.com</a><br>
+        <p><b><a href="https://www.nksoftwarehouse.com" class="text-reset">Powered By NK Software House</a></b></p>
+    </div>
     <!-- Copyright -->
     <!-- Bootstrap core JavaScript -->
-                    <script src="~/Content/vendor/jquery/jquery.min.js"></script>
-                    <script src="~/Content/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/Content/vendor/jquery/jquery.min.js"></script>
+    <script src="~/Content/vendor/bootstrap/js/bootstrap.min.js"></script>
     <!--Sweet Alert-->
-                    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <!--Order JS-->
-                    <script src="~/Scripts/js/order.js"></script>
-                    <script>
-                        $(document).ready(function () {
-                            document.getElementById('ProductTitle').innerHTML = sessionStorage.getItem("all_items_quantity_list");
-                        });
-                    </script>
+    <script src="~/Scripts/js/order.js"></script>
+    <script>
+        $(document).ready(function () {
+            document.getElementById('ProductTitle').innerHTML = sessionStorage.getItem("all_items_quantity_list");
+        });
+    </script>
 }
 
 

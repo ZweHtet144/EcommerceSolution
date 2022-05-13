@@ -18,95 +18,95 @@
 <script src="~/Content/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 <body style="background-color:white">
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: #f8b140">
-<a class="navbar-brand" href="#"><span style="font-weight: bold;font-family: 'Roboto', sans-serif;"><img src="~/Content/img/logo/nyein.jpg" alt="ငြိမ်း Official Logo" style=width:50px;height:50px> ငြိမ်းကွမ်းယာပစ္စည်း</span></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
-                    aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="@Url.Action("ChooseService","AdminPanel")">
-                            Choose Service
-                            <span class="sr-only">(current)</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
+        <a class="navbar-brand" href="#"><span style="font-weight: bold;font-family: 'Roboto', sans-serif;"><img src="~/Content/img/logo/nyein.jpg" alt="ငြိမ်း Official Logo" style=width:50px;height:50px> ငြိမ်းကွမ်းယာပစ္စည်း</span></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="@Url.Action("ChooseService","AdminPanel")">
+                        Choose Service
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
     </nav>
     <br>
     <br>
     <br>
     <h4 class="text-center">Order စာရင်း<sup></sup>&nbsp;<i class="fas fa-clipboard-list"></i></h4>
     <br>
-   <div class="container-fluid">
-       <div class="table-responsive">
-           <table class="table table-bordered">
-               <tr>
-                   <th>
-                       ရက်/အချိန်
-                   </th>
-                   <th>
-                       အမည်
-                   </th>
-                   <th>
-                       ဖုန်းနံပါတ်
-                   </th>
-                   <th>
-                       မြို့တော်
-                   </th>
-                   <th>
-                       ရပ်ကွက်
-                   </th>
-                   <th>
-                       လမ်း
-                   </th>
-                   <th>
-                       ဘတ်စ်ကားမှတ်တိုင်
-                   </th>
-                   <th>
-                       ပစ္စည်းအမည်
-                   </th>
-                   <th>
-                       စုစုပေါင်း
-                   </th>
-               </tr>
+    <div class="container-fluid">
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <tr>
+                    <th>
+                        ရက်/အချိန်
+                    </th>
+                    <th>
+                        အမည်
+                    </th>
+                    <th>
+                        ဖုန်းနံပါတ်
+                    </th>
+                    <th>
+                        မြို့တော်
+                    </th>
+                    <th>
+                        ရပ်ကွက်
+                    </th>
+                    <th>
+                        လမ်း
+                    </th>
+                    <th>
+                        ဘတ်စ်ကားမှတ်တိုင်
+                    </th>
+                    <th>
+                        ပစ္စည်းအမည်
+                    </th>
+                    <th>
+                        စုစုပေါင်း
+                    </th>
+                </tr>
 
-               @foreach (var item in Model)
-               {
-                   <tr>
-                       <td>
-                           @item.OrderDate.ToString("dd/MM/yyyy hh:mm tt")
-                       </td>
-                       <td>
-                           @Html.DisplayFor(modelItem => item.Name)
-                       </td>
-                       <td>
-                           @Html.DisplayFor(modelItem => item.Phone)
-                       </td>
-                       <td>
-                           @Html.DisplayFor(modelItem => item.city)
-                       </td>
-                       <td>
-                           @Html.DisplayFor(modelItem => item.ward)
-                       </td>
-                       <td>
-                           @Html.DisplayFor(modelItem => item.street)
-                       </td>
-                       <td>
-                           @Html.DisplayFor(modelItem => item.busstop)
-                       </td>
-                       <td>
-                           @Html.DisplayFor(modelItem => item.Item)
-                       </td>
-                       <td>
-                           @Html.DisplayFor(modelItem => item.TotalPrice)
-                       </td>
-                   </tr>
-               }
-           </table>
-       </div>
-   </div>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @item.OrderDate.ToString("dd/MM/yyyy hh:mm tt")
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Phone)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.city)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ward)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.street)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.busstop)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Item)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TotalPrice)
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
     <br />
     <!-- Copyright -->
     <div class="footer-copyright text-center py-3">
@@ -117,4 +117,4 @@
         </p>
     </div>
     <!-- Copyright -->
-    </body>
+</body>
