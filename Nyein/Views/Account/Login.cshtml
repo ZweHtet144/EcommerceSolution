@@ -1,0 +1,110 @@
+﻿@using Nyein.Models
+@model LoginViewModel
+@{
+    ViewBag.Title = "Log in";
+    Layout = null;
+}
+<title>ငြိမ်း ကွမ်းယာပစ္စည်း | Admin Panel</title>
+<meta name="viewport" content="width=device-width" />
+<link href="~/Content/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+<link rel="apple-touch-icon" sizes="180x180" href="~/Content/fav/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="~/Content/fav/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="~/Content/fav/favicon-16x16.png">
+<meta name="theme-color" content="#ed970e">
+<link href="~/Content/mycss/css/shop-homepage.css" rel="stylesheet" />
+<link href="~/Content/mycss/css/style.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.0/css/mdb.min.css" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
+<link href="~/Content/mycss/css/admin.css" rel="stylesheet" />
+<script src="~/Content/vendor/jquery/jquery.min.js"></script>
+<script src="~/Content/vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--Sweet Alert-->
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<style>
+ 
+
+    #main_body {
+        margin-top: 50px;
+    }
+</style>
+@using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    if (ViewBag.Error != null)
+    {
+        <script>
+            swal({
+                title: 'Error!',
+                icon: 'error',
+                text: 'Invalid UserId or Password.Please try again',
+                type: 'error',
+                allowOutsideClick: false,
+                confirmButtonColor: '#3085d6',
+                confirmButtonText: 'Ok',
+                allowEscapeKey: false
+            }).then(function () {
+                window.location = '/Account/Login';
+            });
+        </script>
+    }
+    else
+    {
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: #f8b140;">
+<a class="navbar-brand" href="#"><span style="font-weight: bold;font-family: 'Roboto', sans-serif;"><img src="~/Content/img/logo/nyein.jpg" alt="ငြိမ်း Official Logo" style=width:50px;height:50px> ငြိမ်းကွမ်းယာပစ္စည်း</span></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+            </div>
+    </nav>
+    <div class="container" id="main_body">
+        <div class="shadow-lg p-3 mb-5 bg-white rounded">
+            <form>
+                <center>
+                    <img src="~/Content/img/logo/user-sign-in-icon-removebg-preview.png" alt="ငြိမ်း Official Logo"
+                         style="width:45px;height:50px;">
+                </center>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">User Id</label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                           placeholder="Enter your user id" name="UserName">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Password</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Enter your password" name="Password">
+                </div>
+                <center><button type="submit" class="btn btn-success">Login</button></center>
+            </form>
+        </div>
+    </div>
+</body>
+    }
+
+}
+@*<p>
+            @Html.ActionLink("Register as a new user", "Register")
+    </p>*@
+@*<div class="shadow-lg p-3 mb-5 bg-white rounded">
+        <form>
+            <center>
+                <img src="../img/logo/user-sign-in-icon-removebg-preview.png" alt="ငြိမ်း Official Logo"
+                     style="width:45px;height:50px;">
+            </center>
+            <div class="form-group">
+                <label for="exampleInputEmail1">User Id</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                       placeholder="Enter your user id">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Password</label>
+                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Enter your password">
+            </div>
+            <center><button type="submit" class="btn btn-success">Login</button></center>
+        </form>
+    </div>*@

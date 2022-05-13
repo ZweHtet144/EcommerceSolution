@@ -1,0 +1,16 @@
+﻿@{
+    ViewBag.Title = "CheckOut";
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+}
+<button type="button" class="btn btn-primary btn-cart btn-xl" onclick="window.location.href='/MainPage/ShowAddtoCardItem'" id="cart">
+    <i class="fas fa-shopping-cart fa-1x"><sup id="cart_item_quantity">@Session["Count"]</sup></i>
+</button>
+<script src="~/Content/vendor/jquery/jquery.min.js"></script>
+<script src="~/Content/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+    //$(document).ready(function () {
+    //    setInterval(function () {
+    //        $('#cart_item_quantity').load('#cart_item_quantity')
+    //    }, 2000);
+    //});
+</script>

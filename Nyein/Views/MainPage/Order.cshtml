@@ -1,0 +1,158 @@
+﻿@model IEnumerable<Nyein.Models.AddtoCart>
+@{
+    ViewBag.Title = "ငြိမ်းကွမ်းယာပစ္စည်း|Order";
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+}
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="ငြိမ်းတွင် ကွမ်းယာပစ္စည်း ၊ အန္ဒိယဆေးမွေးပစ္စည်း ၊ မြန်မာဆေးရွက်ကြီးများ နှင့် လူသူံးကုန်ပစ္စည်းများကို ယုံကြည်စိတ်ချစွာ ဝယ်ယူနိုင်ပါသည်။">
+<meta name="author" content="ငြိမ်းတွင် ကွမ်းယာပစ္စည်း ၊ အန္ဒိယဆေးမွေးပစ္စည်း ၊ မြန်မာဆေးရွက်ကြီးများနှင့် လူသုံးကုန်ကုန်ပစ္စည်းများကို ယုံကြည်စိတ်ချစွာ ဝယ်ယူနိုင်ပါသည်။">
+<title>ငြိမ်းကွမ်းယာပစ္စည်း|Order</title>
+<!--fav-->
+<link rel="apple-touch-icon" sizes="180x180" href="~/Content/fav/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="~/Content/fav/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="~/Content/fav/favicon-16x16.png">
+<meta name="theme-color" content="#ed970e">
+@if (Session["Cart"] == null)
+{
+    <script>
+        window.location.href = "@Url.Action("Popular", "MainPage")";
+    </script>
+}
+else
+{
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: #f8b140;">
+        <a class="navbar-brand" href="#"><span style="font-weight: bold;font-family: 'Roboto', sans-serif;"><img src="~/Content/img/logo/nyein.jpg" alt="ငြိမ်း Official Logo" style=width:50px;height:50px> ငြိမ်းကွမ်းယာပစ္စည်း</span></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="@Url.Action("Popular", "MainPage")">လူကြိုက်များထုတ်ကုန်</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="@Url.Action("Consumable", "MainPage")">စားသုံးကုန် ပစ္စည်းများ</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="@Url.Action("ConsumerGood", "MainPage")">လူသုံးကုန်ပစ္စည်းများ</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="@Url.Action("IndiaProduct", "MainPage")">အန္ဒိယဆေးမွေးပစ္စည်းများ</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="@Url.Action("MyanmarProduct", "MainPage")">မြန်မာဆေးရွကိကြီးပစ္စည်းများ</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="~/about_us.html">ဝဘ်ဆိုက်အကြောင်း</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <br />
+    <br />
+    <center>
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="card shadow-lg p-3 mb-5 bg-white rounded">
+                        <div>
+                            <div class="card-body">
+                                <h5 class="card-title">Order တင်ရန်</h5>
+                                <div id="ProductTitle" hidden></div>
+                                @*<h6 class="card-subtitle mb-2 text-muted">*@
+                                ပစ္စည်းအမည်
+                                @foreach (var item in Model)
+                                {
+                                    <span class="card-subtitle mb-6 text-muted" id="item"> @item.Title,</span>
+                                }
+                                @*</h6>*@<br />
+                                Total:<span class="card-text" id="totalPrice"></span> MMK
+                                @*Total Quantity:<span class="card-text" id="totalQty"></span>*@
+                                <form>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1" style="float:left">အမည်</label>
+                                        <input type="text" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Enter Your Name" required="required">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputPassword1" style="float:left">ဖုန်းနံပါတ်</label>
+                                        <input type="text" class="form-control" id="phone" placeholder="Enter Phone Number" required="required">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputPassword1" style="float:left">မြို့နဟ်</label>
+                                        <input type="text" class="form-control" id="city" placeholder="Enter Your City" required="required">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputPassword1" style="float:left">ရပ်ကွက်</label>
+                                        <input type="text" class="form-control" id="ward" placeholder="Enter Your Ward" required="required">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputPassword1" style="float:left">လမ်းအမည် (သို့မဟုတ်) လမ်းနံပါတ်</label>
+                                        <input type="text" class="form-control" id="street" placeholder="Enter Your Street Name" required="required">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputPassword1" style="float:left">အနီးကားမှတ်တိုင် အမည်</label>
+                                        <input type="text" class="form-control" id="busstop" placeholder="Enter Your Bus Stop" required="required">
+                                    </div>
+                                    <button type="button" class="btn btn-info" id="btnsend">Order တင်မည်။</button><br />
+                                    <input type="hidden" id="getPrice" />
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </center>
+    <!-- Messenger Chat plugin Code -->
+    <div id="fb-root"></div>
+
+                    <!-- Your Chat plugin code -->
+    <div id="fb-customer-chat" class="fb-customerchat">
+    </div>
+                    @* Messenger Plugin *@
+                    <script>
+                        var chatbox = document.getElementById('fb-customer-chat');
+                        chatbox.setAttribute("page_id", "112755027165266");
+                        chatbox.setAttribute("attribution", "biz_inbox");
+
+                        window.fbAsyncInit = function () {
+                            FB.init({
+                                xfbml: true,
+                                version: 'v11.0'
+                            });
+                        };
+
+                        (function (d, s, id) {
+                            var js, fjs = d.getElementsByTagName(s)[0];
+                            if (d.getElementById(id)) return;
+                            js = d.createElement(s); js.id = id;
+                            js.src = 'https://connect.facebook.net/my_MM/sdk/xfbml.customerchat.js';
+                            fjs.parentNode.insertBefore(js, fjs);
+                        }(document, 'script', 'facebook-jssdk'));
+                    </script>
+    <!-- Copyright -->
+                    <div class="footer-copyright text-center py-3">
+                        © @DateTime.Now.ToString("yyyy") Copyright:
+                        <a href="#" class="text-reset">www.nyeinshopping.com</a><br>
+                        <p><b><a href="https://www.nksoftwarehouse.com" class="text-reset">Powered By NK Software House</a></b></p>
+                    </div>
+    <!-- Copyright -->
+    <!-- Bootstrap core JavaScript -->
+                    <script src="~/Content/vendor/jquery/jquery.min.js"></script>
+                    <script src="~/Content/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!--Sweet Alert-->
+                    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <!--Order JS-->
+                    <script src="~/Scripts/js/order.js"></script>
+                    <script>
+                        $(document).ready(function () {
+                            document.getElementById('ProductTitle').innerHTML = sessionStorage.getItem("all_items_quantity_list");
+                        });
+                    </script>
+}
+
+

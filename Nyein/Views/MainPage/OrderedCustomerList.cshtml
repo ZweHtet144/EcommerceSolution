@@ -1,0 +1,120 @@
+﻿@model IEnumerable<Nyein.Models.AddtoCart>
+
+@{
+    ViewBag.Title = "ငြိမ်းကွမ်းယာပစ္စည်း";
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+}
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="ငြိမ်းတွင် ကွမ်းယာပစ္စည်း ၊ အန္ဒိယဆေးမွေးပစ္စည်း ၊ မြန်မာဆေးရွက်ကြီးများ နှင့် လူသူံးကုန်ပစ္စည်းများကို ယုံကြည်စိတ်ချစွာ ဝယ်ယူနိုင်ပါသည်။">
+<meta name="author" content="ငြိမ်းတွင် ကွမ်းယာပစ္စည်း ၊ အန္ဒိယဆေးမွေးပစ္စည်း ၊ မြန်မာဆေးရွက်ကြီးများနှင့် လူသုံးကုန်ကုန်ပစ္စည်းများကို ယုံကြည်စိတ်ချစွာ ဝယ်ယူနိုင်ပါသည်။">
+<link rel="apple-touch-icon" sizes="180x180" href="~/Content/fav/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="~/Content/fav/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="~/Content/fav/favicon-16x16.png">
+<meta name="theme-color" content="#ed970e">
+<title>ငြိမ်းကွမ်းယာပစ္စည်း | Order List</title>
+<link href="~/Content/mycss/admin.css" rel="stylesheet" />
+<script src="~/Content/vendor/jquery/jquery.min.js"></script>
+<script src="~/Content/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<body style="background-color:white">
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: #f8b140">
+<a class="navbar-brand" href="#"><span style="font-weight: bold;font-family: 'Roboto', sans-serif;"><img src="~/Content/img/logo/nyein.jpg" alt="ငြိမ်း Official Logo" style=width:50px;height:50px> ငြိမ်းကွမ်းယာပစ္စည်း</span></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                    aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="@Url.Action("ChooseService","AdminPanel")">
+                            Choose Service
+                            <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+    </nav>
+    <br>
+    <br>
+    <br>
+    <h4 class="text-center">Order စာရင်း<sup></sup>&nbsp;<i class="fas fa-clipboard-list"></i></h4>
+    <br>
+   <div class="container-fluid">
+       <div class="table-responsive">
+           <table class="table table-bordered">
+               <tr>
+                   <th>
+                       ရက်/အချိန်
+                   </th>
+                   <th>
+                       အမည်
+                   </th>
+                   <th>
+                       ဖုန်းနံပါတ်
+                   </th>
+                   <th>
+                       မြို့တော်
+                   </th>
+                   <th>
+                       ရပ်ကွက်
+                   </th>
+                   <th>
+                       လမ်း
+                   </th>
+                   <th>
+                       ဘတ်စ်ကားမှတ်တိုင်
+                   </th>
+                   <th>
+                       ပစ္စည်းအမည်
+                   </th>
+                   <th>
+                       စုစုပေါင်း
+                   </th>
+               </tr>
+
+               @foreach (var item in Model)
+               {
+                   <tr>
+                       <td>
+                           @item.OrderDate.ToString("dd/MM/yyyy hh:mm tt")
+                       </td>
+                       <td>
+                           @Html.DisplayFor(modelItem => item.Name)
+                       </td>
+                       <td>
+                           @Html.DisplayFor(modelItem => item.Phone)
+                       </td>
+                       <td>
+                           @Html.DisplayFor(modelItem => item.city)
+                       </td>
+                       <td>
+                           @Html.DisplayFor(modelItem => item.ward)
+                       </td>
+                       <td>
+                           @Html.DisplayFor(modelItem => item.street)
+                       </td>
+                       <td>
+                           @Html.DisplayFor(modelItem => item.busstop)
+                       </td>
+                       <td>
+                           @Html.DisplayFor(modelItem => item.Item)
+                       </td>
+                       <td>
+                           @Html.DisplayFor(modelItem => item.TotalPrice)
+                       </td>
+                   </tr>
+               }
+           </table>
+       </div>
+   </div>
+    <br />
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3">
+        © @DateTime.Now.ToString("yyyy") Copyright:
+        <a href="#" class="text-reset">www.nyeinshopping.com</a><br />
+        <p>
+            <b><a href="https://www.nksoftwarehouse.com">Powered By NK Software House</a></b>
+        </p>
+    </div>
+    <!-- Copyright -->
+    </body>

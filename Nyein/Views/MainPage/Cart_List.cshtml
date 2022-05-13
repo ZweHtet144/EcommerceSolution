@@ -1,0 +1,286 @@
+﻿@model IEnumerable<Nyein.Models.AddtoCart>
+@using Newtonsoft.Json;
+@{
+    ViewBag.Title = "ငြိမ်းကွမ်းယာပစ္စည်း";
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="~/Content/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="apple-touch-icon" sizes="180x180" href="~/Content/fav/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="~/Content/fav/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="~/Content/fav/favicon-16x16.png">
+    <meta name="theme-color" content="#ed970e">
+    <link href="~/Content/mycss/css/shop-homepage.css" rel="stylesheet" />
+    <link href="~/Content/mycss/css/style.css" rel="stylesheet" />
+    <link href="~/Content/mycss/css/cart_list.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.0/css/mdb.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
+</head>
+@if (Session["Cart"] == null)
+{
+<h1 class="text-center">စျေးခြင်းတောင်းထဲတွင်ပစ္စည်းမရှိပါ</h1>
+}
+else
+{
+    <body>
+        <!-- Navigation -->
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: #f8b140;">
+            <a class="navbar-brand" href="#"><span style="font-weight: bold;font-family: 'Roboto', sans-serif;"><img src="~/Content/img/logo/nyein.jpg" alt="ငြိမ်း Official Logo" style=width:50px;height:50px> ငြိမ်းကွမ်းယာပစ္စည်း</span></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("Popular","MainPage")">လူကြိုက်များထုတ်ကုန်</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("Consumable","MainPage")">စားသုံးကုန် ပစ္စည်းများ</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("ConsumerGood","MainPage")">လူသုံးကုန်ပစ္စည်းများ</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("IndiaProduct","MainPage")">အန္ဒိယဆေးမွေးပစ္စည်းများ</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("MyanmarProduct","MainPage")">မြန်မာဆေးရွကိကြီးပစ္စည်းများ</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="~/about_us.html">ဝဘ်ဆိုက်အကြောင်း</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+        </nav>
+        <!-- Page Content -->
+        <br><br>
+        <h4>ပစ္စည်းစာရင်း&nbsp;<i class="fas fa-clipboard-list"></i></h4><br>
+        @*<h3>@Session["Count"]</h3>*@
+        <!--First Card-->
+        @foreach (var item in Model.GroupBy(s=>s.Title).Select(m=>m.First()).ToList())
+        {
+
+            @*<input type="hidden" id="no_1">@item.Id</input><br><br>*@
+            <div class="shadow-lg p-3 mb-5 bg-white rounded" id="maindiv">
+                <button class="btn btn-danger" id="delete_btn" onclick="deleteInternal('@JsonConvert.SerializeObject(item)')"><i class="far fa-trash-alt"></i></button>
+                <div class="container" id="card_border">
+                    <br><br>
+                    <div class="row">
+                        <!--First Card-->
+                        <div class="col-lg">
+
+                            <span id="cart_title">(ပစ္စည်းအမည်)<br><br><span id="title_@item.Id">@item.Title</span></span><br><br>
+                        </div>
+                        <div class="col-lg" id="item_quantity">
+                            <span id="cart_title" class="allPrice">
+                                (အရေအတွက်)<br><br>
+                                <input type="number" value="1" min="1" max="100" step="1" id="qty_@item.Id" onchange="Calculate('@JsonConvert.SerializeObject(item)')" class="innerQty" />
+                            </span><br><br>
+                        </div>
+                        <div class="col-lg" id="allPrice">
+                            <span id="cart_title" class="allPrice">(စျေးနှုန်း)<br /><br /></span>
+                                <div id="card-title"><span id="price_@item.Id" class="innerPrices">@item.Price KS</span></div>
+</div>
+                    </div><!--Finished First Card-->
+                </div><!--Finished Container-->
+            </div>
+        }
+        <!--Finished Card-->
+        <div class="container">
+            <div class="row">
+                <div class="col-lg">
+                    <h3 style="font-weight: 600;float:right" id="totalPrice"></h3><br><br>
+                    <input type="hidden" id="getPrice" />
+                    <div id="hid" style="color:white;"></div>
+                </div>
+            </div>
+        </div>
+
+        <center>
+            <div class="col-lg"><button class="btn btn-success" id="order_btn" data-toggle="modal" data-target="#confirmModal" >Order တင်မည်။</button></div>
+            <!--Confirm Modal-->
+            <div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="quantityModalLabel">Orderတင်ရန်သေချာပါသလား ?</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <!-- <div class="modal-body">
+                        </div> -->
+                        <div class="modal-footer">
+                            <button type="button" id="modal_yes" class="btn btn-success" data-dismiss="modal" @*onclick="go_to_place_order();"*@ onclick="get_all_items_quantity();">သေချာပါပြီ။</button>
+                            <button type="button" id="modal_no" class="btn btn-primary" data-dismiss="modal">မသေချာသေးပါ။</button>
+                        </div>
+                    </div>
+                </div>
+            
+            </div><!--Finished Confirm Modal-->
+        </center>
+        <!-- Messenger Chat plugin Code -->
+        <div id="fb-root"></div>
+
+        <!-- Your Chat plugin code -->
+        <div id="fb-customer-chat" class="fb-customerchat">
+        </div>
+        @* Messenger Plugin *@
+        <script>
+                    var chatbox = document.getElementById('fb-customer-chat');
+                    chatbox.setAttribute("page_id", "112755027165266");
+                    chatbox.setAttribute("attribution", "biz_inbox");
+
+                    window.fbAsyncInit = function () {
+                        FB.init({
+                            xfbml: true,
+                            version: 'v11.0'
+                        });
+                    };
+
+                    (function (d, s, id) {
+                        var js, fjs = d.getElementsByTagName(s)[0];
+                        if (d.getElementById(id)) return;
+                        js = d.createElement(s); js.id = id;
+                        js.src = 'https://connect.facebook.net/my_MM/sdk/xfbml.customerchat.js';
+                        fjs.parentNode.insertBefore(js, fjs);
+                    }(document, 'script', 'facebook-jssdk'));
+        </script>
+        <!-- Copyright -->
+        <br><br><br>
+        <div class="footer-copyright text-center py-3">
+            © @DateTime.Now.ToString("yyyy") Copyright:
+            <a href="#" class="text-reset">www.nyeinshopping.com</a><br>
+            <p><b><a href="https://www.nksoftwarehouse.com">Powered By NK Software House</a></b></p>
+        </div>
+        @{ 
+            int i = 0;
+            foreach(var item in Model)
+            {
+                i++;
+                <script type="text/javascript">
+                   sessionStorage.setItem(@i,@item.Id);
+                </script>
+                
+            }
+            <p id="session_count" style="display:none">@i</p>
+        }
+
+        <!-- Copyright -->
+        <!-- Footer -->
+        <!-- Bootstrap core JavaScript -->
+        <script src="~/Content/vendor/jquery/jquery.min.js"></script>
+        <script src="~/Content/vendor/bootstrap/js/bootstrap.min.js"></script>
+        <!--Cart List JS-->
+       <script type="text/javascript">
+           function get_all_items_quantity(){
+               var total_items=0;
+               total_items=document.getElementById('session_count').innerText;  
+               //console.log(total_items);
+               var all_item_quantity_list="";
+               for (i = 1; i <= total_items; i++){
+                   all_item_quantity_list += document.getElementById("title_" + sessionStorage.getItem(i)).innerHTML + "/" + document.getElementById("qty_" + sessionStorage.getItem(i)).value + ",";
+               }
+               console.log(all_item_quantity_list);
+               sessionStorage.setItem("all_items_quantity_list", all_item_quantity_list);
+           }
+           $(document).ready(function () {
+               var totalPrice = 0;
+               totalPrice +=@Html.Raw(Json.Encode(Model.Sum(x => x.Price)));
+               document.getElementById('totalPrice').innerHTML = "Total:" + totalPrice + "KS";
+               //For Processing
+               document.getElementById('getPrice').value = totalPrice;
+
+           });
+           function TotalAmount(Id) {
+               var FinalSum = 0;
+               var FinalQty=0;
+               var P = 0;
+               getPrices = document.getElementById('price_' + Id).innerText;
+               $('.innerPrices').each(function () {
+                   FinalSum += parseInt($(this).text());
+               });
+               $('.innerQty').each(function () {
+                   FinalQty += parseInt($(this).val());
+               });
+               document.getElementById('totalPrice').innerHTML = "Total:" + FinalSum + "KS";
+               //For Processing
+               document.getElementById('getPrice').value = FinalSum;
+               document.getElementById('hid').innerHTML = FinalQty;
+           }
+           function Calculate(obj) {
+               var sum = 0;
+               var sumPrice = 0;
+               sumPrice +=@Html.Raw(Json.Encode(Model.Sum(x => x.Price)));
+               var Id = JSON.parse(obj).Id;
+               var QtyId = $('#qty_' + Id).val();
+               //console.log(sumPrice);
+               var Price = JSON.parse(obj).Price;
+               document.getElementById('price_' + Id).innerHTML = null;
+               document.getElementById('price_' + Id).innerHTML = QtyId * Price +"KS";
+               var total = QtyId * Price;
+               var getprice = 0;
+               $('#price_' + Id).each(function () {
+                   getprice += parseInt($(this).text());
+                   sum += (getprice + sumPrice) - Price;
+               });
+               TotalAmount(Id);
+           }
+           //auto refresh
+           function doRefresh() {
+               $('#maindiv').load('#maindiv');
+               setTimeout(function () {
+                   doRefresh();
+               },500);
+           }
+           $(document).ready(function () {
+               //doRefresh();
+           })
+           $('#modal_yes').click(function () {
+               var totalPrice = $('#getPrice').val();
+               var para = new URLSearchParams();
+               para.append("getTotalPrice", totalPrice);
+               location.href = "/mainpage/Order?" + para.toString();
+
+               //var totalQty = document.getElementById('hid').innerText;
+               //var para1 = new URLSearchParams();
+               //para1.append("getTotalQty", totalQty);
+               //location.href = "/mainpage/checkout?" + para1.toString();
+           });
+           function deleteInternal(obj) {
+               var Id = JSON.parse(obj).Id;
+               _modelId = {
+                   Id:Id
+               }
+               $.ajax({
+                   type: "POST",
+                   url: '/MainPage/RemoveCardInternal',
+                   data: { 'model': _modelId },
+                   dataType: "JSON",
+                   success: function () {
+                       localStorage.removeItem(Id);
+                       //window.location.href = "@Url.Action("Cart_List","MainPage")";
+                       window.location.href='/Cart_List';
+                   }
+               });
+           }
+       </script>
+
+        <script>
+            AOS.init();
+        </script>
+    </body>
+}
+</html>

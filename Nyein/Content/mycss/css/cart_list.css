@@ -1,0 +1,32 @@
+h4{
+    text-align: center;
+}
+#delete_btn{
+    float:right;
+}
+#card_border{
+    border-color: lightgrey;
+    border-style: dotted;
+}
+#cart_title{
+    
+    color: #1A5276;
+    font-size: 19px;
+}
+#card_data{
+    color:black;
+}
+#quantity{
+
+    width:80px;
+}
+h5{
+    font-size: 10px;
+    float:left;
+    color: #1A5276;
+}
+#order_btn{
+    width: 250px;
+    height:60px;
+    font-size: 19px;
+}

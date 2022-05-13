@@ -1,0 +1,200 @@
+﻿@model Nyein.Models.Product
+
+@{
+    ViewBag.Title = "ငြိမ်းကွမ်းယာပစ္စည်း";
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+}
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="ငြိမ်းတွင် ကွမ်းယာပစ္စည်း ၊ အန္ဒိယဆေးမွေးပစ္စည်း ၊ မြန်မာဆေးရွက်ကြီးများ နှင့် လူသူံးကုန်ပစ္စည်းများကို ယုံကြည်စိတ်ချစွာ ဝယ်ယူနိုင်ပါသည်။">
+<meta name="author" content="ငြိမ်းတွင် ကွမ်းယာပစ္စည်း ၊ အန္ဒိယဆေးမွေးပစ္စည်း ၊ မြန်မာဆေးရွက်ကြီးများနှင့် လူသုံးကုန်ကုန်ပစ္စည်းများကို ယုံကြည်စိတ်ချစွာ ဝယ်ယူနိုင်ပါသည်။">
+<link rel="apple-touch-icon" sizes="180x180" href="~/Content/fav/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="~/Content/fav/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="~/Content/fav/favicon-16x16.png">
+<meta name="theme-color" content="#ed970e">
+<title>ငြိမ်းကွမ်းယာပစ္စည်း | History</title>
+<link href="~/Content/mycss/admin.css" rel="stylesheet" />
+<body style="background-color:white;">
+    <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: #f8b140">
+            <a class="navbar-brand" href="#"><span style="font-weight: bold;font-family: 'Roboto', sans-serif;"><img src="~/Content/img/logo/nyein.jpg" alt="ငြိမ်း Official Logo" style=width:50px;height:50px> ငြိမ်း History</span></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                        aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="@Url.Action("ChooseService","AdminPanel")">
+                                Choose Service
+                                <span class="sr-only">(current)</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+        </nav><br /><br />
+        <h4 class="text-center">Uploaded History&nbsp;<i class="fas fa-history"></i></h4><br>
+        <div class="shadow-lg p-3 mb-5 bg-white rounded">
+            <div class="row">
+                <div class="col-lg">
+                    <select class="form-control form-control-lg" style="margin-top:20px;" id="selectbox" onchange="GoPage();">
+                        <option value="/AdminPanel/IHistory">အန္ဒိယဆေးမွေးပစ္စည်းများ</option>
+                        <option value="/AdminPanel/PopularHistory">လူကြိုက်များထုတ်ကုန်</option>
+                        <option value="/AdminPanel/ConsumableHistory">စားသုံးကုန် ပစ္စည်းများ</option>
+                        <option value="/AdminPanel/ConsumerGoodHistory">လူသုံးကုန်ပစ္စည်းများ</option>
+                        <option value="/AdminPanel/MyanmarProductHistory">မြန်မာဆေးရွကိကြီးပစ္စည်းများ</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="shadow-lg p-3 mb-5 bg-white rounded">
+            @*<span id="no_1">1.</span>*@<br><br>
+            @for (int i = 0; i < Model.lstproducts.Count; i++)
+            {
+                var item = Model.lstproducts[i];
+                var a = 0;
+                string s = Model.lstproducts[i].Image;
+                string[] subs = s.Split(' ', '\t');
+                var ig = item.Image.First().ToString();
+                <div class="shadow-lg p-3 mb-5 bg-white rounded">
+                    <div class="container" id="card_border">
+                        <br>
+                        <div class="row">
+                            <!--First Card-->
+                            <div class="col-lg">
+                                <span id="cart_title">(ပစ္စည်းအမည်)<br><br><span id="card_data">@item.Title</span></span><br><br>
+                            </div>
+                            <div class="col-lg">
+                                <span id="cart_title">(စျေးနှုန်း)</span><br><br>@item.Price Ks<br><br>
+                            </div>
+
+                            <!---Slide Section-->
+                            <div class="col-lg">
+                                <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" data-interval="2300">
+                                    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" data-interval="2300">
+                                        <div class="carousel-inner">
+                                            @foreach (var sub in subs)
+                                            {
+                                                var itemClass = a++ == 0 ? "carousel-item active" : "carousel-item";
+                                                <div class="@itemClass">
+                                                    <img class="img-fluid" src="~/Content/image/@sub" alt="cleanser aloe vera" style="width:100%;height:300px;">
+                                                </div>
+                                                <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                                                    <span class="carousel-control-prev-icon" aria-hidden="true" style="background-color: black;border-radius:20px;"></span>
+                                                    <span class="sr-only">Previous</span>
+                                                </a>
+                                                <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                                                    <span class="carousel-control-next-icon" aria-hidden="true" style="background-color: black;border-radius:20px;"></span>
+                                                    <span class="sr-only">Next</span>
+                                                </a>
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!---Slide Section-->
+                            <button class="btn btn-danger delete" id="delete_btn" style="width:100%" data-toggle="modal" data-id="@item.Id">
+                                <i class="far fa-trash-alt"></i>
+                            </button>
+                        </div><!--Finished First Card-->
+                    </div><!--Finished Container-->
+
+                    <input type="hidden" id="del" value="@item.Id" />
+                    @*<button type="button" class="btn btn-danger delete" data-id="@item.Id" id="del">Delete</button>*@
+
+                    <div class="modal fade" id="historyModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="quantityModalLabel">ဖျက်ချင်တာသေချာပါသလား ?</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <!-- <div class="modal-body">
+                                </div> -->
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-danger delete" data-dismiss="modal" data-id="@item.Id" id="del">သေချာပါပြီ။</button>
+                                    <button type="button" id="modal_no" class="btn btn-primary" data-dismiss="modal">မသေချာသေးပါ။</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div><!--Finished Card-->
+    </div>
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3">
+        © @DateTime.Now.ToString("yyyy") Copyright:
+        <a href="#" class="text-reset">www.nyeinshopping.com</a><br />
+        <p>
+            <b><a href="https://www.nksoftwarehouse.com">Powered By NK Software House</a></b>
+        </p>
+    </div>
+    <!-- Copyright -->
+</body>
+<script src="~/Content/vendor/jquery/jquery.min.js"></script>
+<script src="~/Content/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="https://kit.fontawesome.com/56ace15d76.js" crossorigin="anonymous"></script>
+<script>
+    function GoPage() {
+        window.location = $("#selectbox").val();
+    }
+    $('.delete').click(function () {
+        var Id = $(this).data("id");
+        var message = " Item Id'" + Id + "'";
+
+        swal({
+            title: "ဖျက်ရန်သေချာပါသလား ?",
+            text: "ယခု ပစ္စည်းကိုဖျက်ရန်သေချာပါသလား?",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+            .then((willDelete) => {
+                if (willDelete) {
+                    // YES
+                    $.ajax({
+                        type: "POST",
+                        url: '/AdminPanel/Delete',
+                        data: { Id },
+                        dataType: "JSON",
+                        success: function (response) {
+                            swal({
+                                title: 'Success!',
+                                icon: 'success',
+                                text: 'ဖျက်ပြီးပါပြီ',
+                                type: 'success',
+                                allowOutsideClick: false,
+                                confirmButtonColor: '#3085d6',
+                                confirmButtonText: 'Ok',
+                                allowEscapeKey: false
+                            }).then(function () {
+                                location.reload();
+                            });
+                        }, error: function (response) {
+                            swal({
+                                title: "Failed to Delete",
+                                text: "Something Wrong",
+                                icon: "error",
+                            });
+                        }
+                    });
+                } else {
+                    ErrorMessage('Cancel Delete!!');
+                }
+            });
+    });
+</script>
+<script>
+    function ErrorMessage(text) {
+        swal({
+            title: "Delete cancel by User",
+            text: text,
+            icon: "success",
+        });
+    }
+</script>

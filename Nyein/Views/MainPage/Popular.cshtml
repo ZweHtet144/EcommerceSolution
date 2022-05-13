@@ -1,0 +1,245 @@
+﻿@model Nyein.Models.Product
+@using Newtonsoft.Json;
+@{
+    ViewBag.Title = "ငြိမ်းကွမ်းယာပစ္စည်း";
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+}
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="ငြိမ်းတွင် ကွမ်းယာပစ္စည်း ၊ အန္ဒိယဆေးမွေးပစ္စည်း ၊ မြန်မာဆေးရွက်ကြီးများ နှင့် လူသူံးကုန်ပစ္စည်းများကို ယုံကြည်စိတ်ချစွာ ဝယ်ယူနိုင်ပါသည်။">
+<meta name="author" content="ငြိမ်းတွင် ကွမ်းယာပစ္စည်း ၊ အန္ဒိယဆေးမွေးပစ္စည်း ၊ မြန်မာဆေးရွက်ကြီးများနှင့် လူသုံးကုန်ကုန်ပစ္စည်းများကို ယုံကြည်စိတ်ချစွာ ဝယ်ယူနိုင်ပါသည်။">
+<title>ငြိမ်းကွမ်းယာပစ္စည်း</title>
+<!--fav-->
+<link rel="apple-touch-icon" sizes="180x180" href="~/Content/fav/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="~/Content/fav/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="~/Content/fav/favicon-16x16.png">
+<meta name="theme-color" content="#ed970e">
+<!-- Navigation -->
+<body onload="fetch_data();">
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: #f8b140;">
+
+        <a class="navbar-brand" href="#"><span style="font-weight: bold;font-family: 'Roboto', sans-serif;"><img src="~/Content/img/logo/nyein.jpg" alt="ငြိမ်း Official Logo" style=width:50px;height:50px> ငြိမ်းကွမ်းယာပစ္စည်း</span></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">လူကြိုက်များထုတ်ကုန်</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="@Url.Action("Consumable", "MainPage")">စားသုံးကုန်ပစ္စည်းများ</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="@Url.Action("ConsumerGood", "MainPage")">လူသုံးကုန်ပစ္စည်းများ</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="@Url.Action("IndiaProduct", "MainPage")">အန္ဒိယဆေးမွေးပစ္စည်းများ</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="@Url.Action("MyanmarProduct", "MainPage")">မြန်မာဆေးအရွက်ကြီးပစ္စည်းများ</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="~/about_us.html">ဝဘ်ဆိုက်အကြောင်း</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">ဆက်သွယ်ရန်</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!-- Page Content -->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="list-group">
+                    <br>
+                    <p class="text-primary">Category</p>
+                    <div class="category">
+                        <a href="#" class="list-group-item">လူကြိုက်များထုတ်ကုန်</a>
+                        <a href="@Url.Action("Consumable", "MainPage")" class="list-group-item">စားသုံးကုန်ပစ္စည်းများ</a>
+                        <a href="@Url.Action("ConsumerGood", "MainPage")" class="list-group-item">လူသုံးကုန်ပစ္စည်းများ</a>
+                        <a href="@Url.Action("IndiaProduct", "MainPage")" class="list-group-item">အန္ဒိယဆေးမွေးပစ္စည်းများ</a>
+                        <a href="@Url.Action("MyanmarProduct", "MainPage")" class="list-group-item">မြန်မာဆေးရွကိကြီးပစ္စည်းများ</a>
+                    </div>
+                </div>
+                <br>စားသုံးကုန်ပစ္စည်းများ ၊ လူသုံးကုန်ပစ္စည်းများ ၊ <br>အန္ဒိယဆေးမွေးပစ္စည်းများ ၊ မြန်မာဆေးရွက်ကြီးပစ္စည်းများ အားစျေးနူန်းချိုသာစွာဖြင့် လက်လီလက္ကားရောင်းချပေးနေပါပြီ။😊
+            </div>
+            <!-- /.col-lg-3 -->
+            <div class="col-lg-9">
+                <div id="carouselExampleIndicators" class="carousel slide my-4" data-ride="carousel">
+                    <div class="col">
+                        <br>
+                        <p>လူကြိုက်များထုတ်ကုန်</p>
+                    </div>
+                    <!--Row-->
+                    <div class="row">
+
+                        @for (int i = 0; i < Model.lstproducts.Count; i++)
+                        {
+
+                            var item = Model.lstproducts[i];
+                            var a = 0;
+                            string s = Model.lstproducts[i].Image;
+                            string[] subs = s.Split(' ', '\t');
+                            var ig = item.Image.First().ToString();
+                            <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="50" data-aos-duration="1000">
+                                <div class="card h-100">
+                                    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" data-interval="2300">
+                                        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" data-interval="2300">
+                                            <div class="carousel-inner">
+
+                                                @foreach (var sub in subs)
+                                                {
+                                                    var itemClass = a++ == 0 ? "carousel-item active" : "carousel-item";
+                                                    <div class="@itemClass">
+                                                        <img class="d-block w-100" src="~/Content/image/@sub" alt="ငြိမ်းကွမ်းယာပစ္စည်း">
+                                                    </div>
+                                                    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                                                        <span class="carousel-control-prev-icon" aria-hidden="true" style="background-color: black;border-radius:20px;"></span>
+                                                        <span class="sr-only">Previous</span>
+                                                    </a>
+                                                    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                                                        <span class="carousel-control-next-icon" aria-hidden="true" style="background-color: black;border-radius:20px;"></span>
+                                                        <span class="sr-only">Next</span>
+                                                    </a>
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-body">
+                                        <h4 class="card-title">
+                                            <a href="#" id="2_prod">@item.Title</a>
+                                        </h4>
+                                        <h5>
+                                            @item.Price
+                                        </h5>
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <button class="btn btn-primary" id="@item.Id" style="font-weight: 800;font-size: large;" onclick="Add_To_Cart('@JsonConvert.SerializeObject(item)');" data-toggle="modal" data-target="#quantityModal">စျေးခြင်းထဲထည့်ရန်<i class="fas fa-shopping-cart fa-1x"></i></button>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <button class="btn btn-success" id="btn_direct_order" style="font-weight: 800;font-size: 18px;" onclick="GoOrder('@JsonConvert.SerializeObject(item)');">အော်ဒါတင်ရန်&nbsp;&nbsp;<i class="fas fa-store fa-1.5x"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-footer">
+                                        <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div><!-- /.row -->
+                    <!--Footer Card-->
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col" data-aos="fade-left" data-aos-delay="50" data-aos-duration="1000">
+                                <button class="btn btn-primary" style="width:100%;font-size: 15px;" onclick="window.location.href='@Url.Action("Consumable","MainPage")'">
+                                    စားသုံးကုန် ပစ္စည်းများကြည့်ရူရန်<br>အတွက်နှိပ်ပါ
+                                </button>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col" data-aos="fade-left" data-aos-delay="50" data-aos-duration="1000">
+                                <button class="btn btn-warning" style="width:100%;font-size: 15px;" onclick="window.location.href='@Url.Action("ConsumerGood","MainPage")'">
+                                    လူသုံးကုန်ပစ္စည်းများကြည့်ရှုရန်<br>အတွက်နှိပ်ပါ
+                                </button>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col" data-aos="fade-left" data-aos-delay="50" data-aos-duration="1000">
+                                <button class="btn btn-success" style="width:100%;font-size: 15px;" onclick="window.location.href='@Url.Action("IndiaProduct","MainPage")'">
+                                    အန္ဒိယဆေးမွေးပစ္စည်းများကြည့်ရှုရန်<br>အတွက်နှိပ်ပါ
+                                </button>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col" data-aos="fade-left" data-aos-delay="50" data-aos-duration="1000">
+                                <button class="btn btn-blue-grey" style="width:100%;font-size: 15px;" onclick="window.location.href='@Url.Action("MyanmarProduct","MainPage")'">
+                                    မြန်မာဆေးအရွက်ကြီးပစ္စည်းများကြည့်ရှုရန်<br>အတွက်နှိပ်ပါ
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Finsihed Footer Card-->
+                    <!-- Messenger Chat plugin Code -->
+                    <div id="fb-root"></div>
+
+                    <!-- Your Chat plugin code -->
+                    <div id="fb-customer-chat" class="fb-customerchat">
+                    </div>
+                    <!--Shopping Cart-->
+                    <button type="button" class="btn btn-primary btn-cart btn-xl" onclick="window.location.href='@Url.Action("Cart_List","MainPage")'" style="position:fixed;bottom:30px;right:15px" id="cart">
+                        <i class="fas fa-shopping-cart fa-1x"><sup id="cart_item_quantity">0</sup></i>
+                    </button>
+                    <!--Shopping Cart-->
+                    <!--Quantity ADD Modal-->
+                    <div class="modal fade" id="quantityModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="quantityModalLabel">စျေးခြင်းတောင်းထဲထည့်ရန်သေချာပါသလား ?</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <!-- <div class="modal-body">
+                                </div> -->
+                                <div class="modal-footer">
+                                    <button type="button" id="modal_yes" class="btn btn-success" data-dismiss="modal" onclick="Cart_Msg_Confirm();">သေချာပါပြီ။</button>
+                                    <button type="button" id="modal_no" class="btn btn-primary" data-dismiss="modal">မသေချာသေးပါ။</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Finsihed Quantity Add Modal-->
+                    <!--/row-->
+                </div>
+                @* Messenger Plugin *@
+                <script>
+                    var chatbox = document.getElementById('fb-customer-chat');
+                    chatbox.setAttribute("page_id", "112755027165266");
+                    chatbox.setAttribute("attribution", "biz_inbox");
+
+                    window.fbAsyncInit = function () {
+                        FB.init({
+                            xfbml: true,
+                            version: 'v11.0'
+                        });
+                    };
+
+                    (function (d, s, id) {
+                        var js, fjs = d.getElementsByTagName(s)[0];
+                        if (d.getElementById(id)) return;
+                        js = d.createElement(s); js.id = id;
+                        js.src = 'https://connect.facebook.net/my_MM/sdk/xfbml.customerchat.js';
+                        fjs.parentNode.insertBefore(js, fjs);
+                    }(document, 'script', 'facebook-jssdk'));
+                </script>
+                <!-- /.container -->
+                <!-- Footer -->
+                <!-- Footer -->
+                <!-- Copyright -->
+                <br><br><br>
+                <div class="footer-copyright text-center py-3">
+                    © @DateTime.Now.ToString("yyyy") Copyright:
+                    <a href="#" class="text-reset">www.nyeinshopping.com</a><br>
+                    <p><b><a href="https://www.nksoftwarehouse.com">Powered By NK Software House</a></b></p>
+                </div>
+                <!-- Copyright -->
+                <!-- Footer -->
+            </div>
+        </div>
+    </div>
+</body>
+<script src="~/Content/vendor/jquery/jquery.min.js"></script>
+<script src="~/Content/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="https://kit.fontawesome.com/56ace15d76.js" crossorigin="anonymous"></script>
+<script src="~/Scripts/js/cart.js"></script>
+<script>
+    AOS.init();
+</script>

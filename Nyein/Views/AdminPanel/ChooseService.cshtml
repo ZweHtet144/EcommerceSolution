@@ -1,0 +1,101 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="ငြိမ်းတွင် ကွမ်းယာပစ္စည်း ၊ အန္ဒိယဆေးမွေးပစ္စည်း ၊ မြန်မာဆေးရွက်ကြီးများ နှင့် လူသူံးကုန်ပစ္စည်းများကို ယုံကြည်စိတ်ချစွာ ဝယ်ယူနိုင်ပါသည်။">
+    <meta name="author" content="ငြိမ်းတွင် ကွမ်းယာပစ္စည်း ၊ အန္ဒိယဆေးမွေးပစ္စည်း ၊ မြန်မာဆေးရွက်ကြီးများနှင့် လူသုံးကုန်ကုန်ပစ္စည်းများကို ယုံကြည်စိတ်ချစွာ ဝယ်ယူနိုင်ပါသည်။">
+    <link href="~/Content/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="apple-touch-icon" sizes="180x180" href="~/Content/fav/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="~/Content/fav/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="~/Content/fav/favicon-16x16.png">
+    <meta name="theme-color" content="#ed970e">
+    <title>ငြိမ်းကွမ်းယာပစ္စည်း | Admin Panel</title>
+    <link href="~/Content/mycss/css/shop-homepage.css" rel="stylesheet" />
+    <link href="~/Content/mycss/css/style.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.0/css/mdb.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
+    <link href="~/Content/mycss/admin.css" rel="stylesheet" />
+    <script src="~/Content/vendor/jquery/jquery.min.js"></script>
+    <script src="~/Content/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: #f8b140;">
+       <a class="navbar-brand" href="#"><span style="font-weight: bold;font-family: 'Roboto', sans-serif;"><img src="~/Content/img/logo/nyein.jpg" alt="ငြိမ်း Official Logo" style=width:50px;height:50px> ငြိမ်း Choose Service</span></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                    aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("Popular","MainPage")">လူကြိုက်များထုတ်ကုန်</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("Consumable","MainPage")">စားသုံးကုန် ပစ္စည်းများ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("ConsumerGood","MainPage")">လူသုံးကုန်ပစ္စည်းများ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("IndiaProduct","MainPage")">အန္ဒိယဆေးမွေးပစ္စည်းများ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("MyanmarProduct","MainPage")">မြန်မာဆေးရွကိကြီးပစ္စည်းများ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/about_us.html">ဝဘ်ဆိုက်အကြောင်း</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Account/Login">LogOut</a>
+                    </li>
+                </ul>
+            </div>
+    </nav><br><br><br>
+    <div class="text-center">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="shadow p-3 mb-5 bg-white rounded" data-aos="fade-right" data-aos-delay="300">
+                    <div class="col-lg">
+                        <button class="btn btn-warning" class="service_btn" onclick="window.location.href='@Url.Action("AdminPage","AdminPanel")'"><img src="~/Content/img/logo/admin.png" class="services_admin_img"><br>Admin Panel</button>
+                    </div>
+                </div>
+                <div class="shadow p-3 mb-5 bg-white rounded" data-aos="fade-right" data-aos-delay="500">
+                    <div class="col-lg">
+                        <button class="btn btn-success" class="service_btn" onclick="window.location.href='@Url.Action("OrderedCustomerList","MainPage")'"><img src="~/Content/img/logo/order_list.png" class="services_admin_img"><br>Order List</button>
+                    </div>
+                </div>
+                <div class="shadow p-3 mb-5 bg-white rounded">
+                    <div class="col-lg">
+                        <button class="btn btn-info" class="service_btn" onclick="window.location.href='@Url.Action("UploadedProduct","AdminPanel")'"><img src="~/Content/img/logo/history.png" class="services_admin_img"><br>History</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br />
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3">
+        © @DateTime.Now.ToString("yyyy") Copyright:
+        <a href="#" class="text-reset">www.nyeinshopping.com</a><br />
+        <p>
+            <b><a href="https://www.nksoftwarehouse.com">Powered By NK Software House</a></b>
+        </p>
+    </div>
+    <!-- Copyright -->
+    <!-- Footer -->
+</body>
+</html>
+<script>
+    AOS.init();
+</script>
